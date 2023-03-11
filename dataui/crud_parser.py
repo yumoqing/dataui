@@ -1,12 +1,30 @@
 import os
 import sys
-import uitypes
+import json
 import asyncio
 from appPublic.jsonConfig import getConfig
 from appPublic.folderUtils import ProgramPath
 from sqlor.dbpools import DBPools
 from appPublic.myTE import MyTemplateEngine
 from ahserver.baseProcessor import TemplateProcessor
+
+uitypes = [
+	"tel",
+	"email",
+	"file",
+	"password",
+	"str",
+	"int",
+	"float",
+	"date",
+	"check",
+	"checkbox",
+	"code",
+	"text",
+	"audio",
+	"video"
+]
+
 
 class CrudParser:
 	def __init__(self, frontend, metadb=None):
@@ -65,6 +83,7 @@ class CrudParser:
 			dic = {
 				"database":database,
 				"table":table,
+				"request":opts.get('request'),
 				"title":info['summary'][0]['title'],
 				"dataurl":"test_url",
 				"fields":await self.get_fields(metadata, info['fields'])
@@ -169,14 +188,14 @@ class BricksCRUDProcessor(TemplateProcessor):
 
 	async def path_call(self, request, params={}):
 		self.run_ns.update(params)
-		txt = await super(CRUDProcessor, self).path_call(request, 
+		params_kw = await self.run_ns.get('request2ns')()
+		txt = await super(BricksCRUDProcessor, self).path_call(request, 
 										params=self.run_ns)
 		cmd = params_kw.get('command', 'browser')
 		dic = json.loads(txt)
-		database = dic['database']
-		table = dic['table']
+		dic['request'] = request
 		cp = CrudParser(frontend='bricks')
-		s = await cp.render(cmd, d)
+		s = await cp.render(cmd, dic)
 		if cmd in [ "select", "insert", "update", "delete" ]:
 			s = self.run_pyscript(s)
 		return s

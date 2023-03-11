@@ -16,7 +16,12 @@ author = "yumoqing"
 email = "yumoqing@gmail.com"
 
 packages=find_packages()
-package_data = {}
+package_data = {
+	"dataui":[
+		"tmpl/*",
+		"tmpl/*/*"
+	]
+}
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -30,6 +35,7 @@ setup(
     author=author,
     author_email=email,
     install_requires=[
+		"ahserver"
     ],
     packages=packages,
     package_data=package_data,
