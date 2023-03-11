@@ -601,6 +601,13 @@ class CRUDEngine:
 		}
 
 class CRUDProcessor(TemplateProcessor):
+	"""
+	accept json data from frontend with such attributes:
+	{
+		database:
+		table
+	}
+	"""
 	@classmethod
 	def isMe(self, name):
 		return name == 'crud'

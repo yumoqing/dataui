@@ -1,0 +1,20 @@
+{
+	"root":["node1", "node2" ...];
+	"nodetypes":{
+		"nodetype1";{
+			"icon":"ttt",
+			"database":"ttt",
+			"table":"rrt",
+			"idField",
+			"textField",
+			"pidField""
+			"rootpid":"1",
+			"contextmenu":
+			"children":[
+				"nodetyp1", "nodetype2", ...
+			]
+		},
+		...
+	}
+}
+

@@ -1,0 +1,21 @@
+{
+	widgettype":"DataGrid",
+	"options":{
+		"admin":true,
+		"dataurl":"{{request.path}}?command=select",
+		"title":"{{title}}",
+		"fields":[
+{% for f in fields %}
+			{
+				"readonly":true,
+				"name":"{{f.name}}",
+				"label":"{{f.label}}",
+				"datatype":"{{f.datatype}}",
+				"uitype":"{{f.uitype}}",
+				"width":"{{f.width}}"
+			}
+{% if not loop.last %},{% endif %}
+{% endfor %}
+		]
+	}
+}

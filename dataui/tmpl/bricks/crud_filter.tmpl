@@ -1,0 +1,27 @@
+{
+	"widgettype":"ModalForm",
+	"options":{
+		"fields":[
+{% for f in fileds %}
+			{
+				"name":"{{f.name}}",
+				"label":"{{f.title}}",
+				"uitype":"{{f.uitype",
+				"uiparams":{{f.uiparanms}}"
+			}
+{% if not loop.last %},{% endif %}
+{% endfor %}
+		]
+	},
+	"binds":[
+		{
+			"wid":"self",
+			"event":"submit",
+			"actiontype":"script",
+			"target":"{{params_kw.target}}",
+			"datawidget":"self",
+			"script":"self.loadData(kwargs);"
+		}
+	]
+}
+

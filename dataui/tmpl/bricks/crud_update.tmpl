@@ -1,0 +1,7 @@
+db = DBPools()
+async with db.sqlContext('{{database}}') as sor:
+	await sor.U(params_kw)
+	return {
+		"state":"ok",
+		"data"{}
+	}

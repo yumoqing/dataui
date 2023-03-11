@@ -1,0 +1,25 @@
+{
+	"widgettype":"ModalForm",
+	"options":{
+		"width":"{{width}}",
+		"height":"{{height}},
+		"submit_url":"{{request.path}}?command=update",
+		"title":"{{title}}",
+		"description":"{{description}}",
+		"fields":[
+{% for f in fields %}
+			{
+{% if node == 'view' %}
+				"readonly":true,
+{% endif %}
+				"name":"{{f.name}}",
+				"label":"{{f.label}}",
+				"datatype":"{{f.datatype}}",
+				"uitype":"{{f.uitype}}",
+				"width":"{{f.width}}"
+			}
+{% if not loop.last %},{% endif %}
+{% endfor %}
+		]
+	}
+}

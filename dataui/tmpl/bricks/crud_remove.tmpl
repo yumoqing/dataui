@@ -1,0 +1,16 @@
+{
+	"widgettype":"Conform",
+	"options":{
+		"title":"Delete record",
+		"message":"delete record, are you sure?"
+	},
+	"binds":[
+		{
+			"wid":"self",
+			"event":"conform",
+			"actiontype":"script",
+			"target":"{{params_kw.target}}",
+			"script":"self.del_row()"
+		}
+	]
+}

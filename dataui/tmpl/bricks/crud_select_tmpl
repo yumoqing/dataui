@@ -1,0 +1,5 @@
+db = DBPools()
+async with db.sqlContext('{{database}}') as sor:
+	params.update({k:id})
+	d = await sor.RP("{{table}}", params)
+	return d.dict()

@@ -1,0 +1,17 @@
+{
+	"database":"iptvdb",
+	"table":"iptvchannels",
+	"browser":{
+		"field_alter":{
+			"name1":{
+			},
+			"name2":{
+			}
+		},
+		"field_exclude":[],
+		"field_include":[]
+	},
+	"filter":{
+	}
+}
+

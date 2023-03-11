@@ -1,0 +1,12 @@
+db = DBPools()
+id = uuid()
+async with db.sqlContext('{{database}}') as sor:
+	k = info.summary[0].primary[0]
+	params_kw.update({k:id})
+	await sor.C("{{table}}", params_kw)
+	return {
+		"state":"ok",
+		"data":{
+			k:id
+		}
+	}

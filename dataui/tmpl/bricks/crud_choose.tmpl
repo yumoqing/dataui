@@ -1,0 +1,57 @@
+{
+	"widgettype":"VBox",
+	"options":{
+		"height":"auto",
+		"width":"100%"
+	},
+	"subwidgets":[
+{
+	widgettype":"DataGrid",
+	"options":{
+		"check":true,
+		"dataurl":"{{request.path}}?command=select",
+		"title":"{{title}}",
+		"fields":[
+{% for f in fields %}
+			{
+{% if node == 'view' %}
+				"readonly":true,
+{% endif %}
+				"name":"{{f.name}}",
+				"label":"{{f.label}}",
+				"datatype":"{{f.datatype}}",
+				"uitype":"{{f.uitype}}",
+				"width":"{{f.width}}"
+			}
+{% if not loop.last %},{% endif %}
+{% endfor %}
+		]
+	}
+},
+{
+	"widgettype":"HBox",
+	"options":{
+		"height":"auto",
+		"width":"100%"
+	},
+	"subwidgets":[
+		{
+			"widgettype":"Button",
+			"options":{
+				"icon":"/imgs/select.png",
+				"name":"select",
+				"Label":"Select"
+			}
+		},
+		{
+			"widgettype":"Button",
+			"options":{
+				"icon":"/imgs/discard.png",
+				"name":"discard",
+				"Label":"Discard"
+			}
+		}
+	]
+}
+	]
+}
