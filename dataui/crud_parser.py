@@ -161,7 +161,7 @@ class BricksCRUDProcessor(TemplateProcessor):
 
 	async def run_pyscript(txt):
 		lines = [ '\t' + l for l in txt.split('\n') ]
-		txt = "async def myfunc(request, **ns):\n' + '\n'.join(lines)
+		txt = "async def myfunc(request, **ns):\n" + '\n'.join(lines)
 		lenv = self.run_ns.copy()
 		exec(txt, lenv, lenv)
 		f = lenv['myfunc']
