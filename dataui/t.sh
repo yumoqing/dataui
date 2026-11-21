@@ -1,3 +1,3 @@
 
 cd ~/www
-python ~/py/dataui/dataui/get_fields.py ~/py/dataui/dataui/iptvchannels.json
+python ~/work/repos/dataui/dataui/get_fields.py ~/work/repos/dataui/dataui/iptvchannels.json
